@@ -24,7 +24,7 @@ float pitchAccel, rollAccel;
 
 long previousMillis = 0;    // set up timers
 unsigned long currentMillis;    
-long interval = 10;        // time constant for timers
+long interval = 20;        // time constant for timers
 
 int dt=interval/1000;
 
