@@ -9,6 +9,9 @@ int16_t gx, gy, gz;
 #define pi 3.14159
 #define Gyr_Gain 0.00763358 
 
+#define LED_PIN 13
+bool blinkState = false;
+
 float AccelX;
 float AccelY;
 float AccelZ;
@@ -31,7 +34,7 @@ int dt=interval/1000;
 void setup() {
   Wire.begin();
   accelgyro.initialize();
-  
+  pinMode(LED_PIN, OUTPUT);  
   Serial.begin(115200);
 }
 
@@ -69,8 +72,12 @@ void loop() {
       Serial.print(mixX, 4);
       Serial.print('\n');
 
+      // blink LED to indicate activity
+      blinkState = !blinkState;
+      digitalWrite(LED_PIN, blinkState);
     
       }
+      
 
 
 }
