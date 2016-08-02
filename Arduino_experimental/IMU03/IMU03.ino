@@ -28,7 +28,10 @@ long previousMillis = 0;    // set up timers
 unsigned long currentMillis;    
 long interval = 20;        // time constant for timers
 
-int dt=interval/1000;
+float dt=0.02;
+
+float K = 0.8;
+float A = K / (K+dt);
 
 void setup() {
   Wire.begin();
@@ -51,14 +54,14 @@ void loop() {
       AccelY = ay;
       AccelZ = az;
       GyroX = Gyr_Gain * (gx);
-      GyroY = Gyr_Gain * (gy);
+      GyroY = Gyr_Gain * (gy)*-1;
       GyroZ = Gyr_Gain * (gz);
     
       AccelY = (atan2(AccelY, AccelZ) * 180 / PI);
       AccelX = (atan2(AccelX, AccelZ) * 180 / PI);
     
-      mixX = 0.98 *(mixX+GyroX*dt) + 0.02*AccelY;  
-      mixY = 0.98 *(mixY+GyroY*dt) + 0.02*AccelX; 
+      mixX = A *(mixX+GyroX*dt) + (1-A)*AccelY;    
+      mixY = A *(mixY+GyroY*dt) + (1-A)*AccelX; 
      
        
       //Serial.print(AccelY);
