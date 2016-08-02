@@ -31,7 +31,8 @@ long interval = 20;        // time constant for timers
 float dt=0.02;
 
 float K = 0.8;
-float A = K / (K+dt);
+//float A = K / (K+dt);
+float A = 0.98;
 
 void setup() {
   Wire.begin();
