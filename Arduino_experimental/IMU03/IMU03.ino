@@ -6,7 +6,6 @@ MPU6050 accelgyro;
 int16_t ax, ay, az;
 int16_t gx, gy, gz;
 
-#define pi 3.14159
 #define Gyr_Gain 0.00763358 
 
 #define LED_PIN 13
@@ -55,8 +54,8 @@ void loop() {
       GyroY = Gyr_Gain * (gy);
       GyroZ = Gyr_Gain * (gz);
     
-      AccelY = (atan2(AccelY, AccelZ) * 180 / pi);
-      AccelX = (atan2(AccelX, AccelZ) * 180 / pi);
+      AccelY = (atan2(AccelY, AccelZ) * 180 / PI);
+      AccelX = (atan2(AccelX, AccelZ) * 180 / PI);
     
       mixX = 0.98 *(mixX+GyroX*dt) + 0.02*AccelY;  
       mixY = 0.98 *(mixY+GyroY*dt) + 0.02*AccelX; 
