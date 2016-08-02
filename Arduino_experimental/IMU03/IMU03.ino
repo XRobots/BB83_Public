@@ -64,9 +64,9 @@ void loop() {
       //Serial.print(GyroX);
       //Serial.print(" , ");
             
-      Serial.print(mixY);
+      Serial.print(mixY, 4);
       Serial.print(",");
-      Serial.print(mixX);
+      Serial.print(mixX, 4);
       Serial.print('\n');
 
     
