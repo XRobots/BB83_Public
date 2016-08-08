@@ -30,10 +30,6 @@ long interval = 20;        // time constant for timers
 
 float dt=0.02;
 
-float K = 0.8;
-//float A = K / (K+dt);
-float A = 0.98;
-
 void setup() {
   Wire.begin();
   accelgyro.initialize();
@@ -60,6 +56,9 @@ void loop() {
     
       AccelY = (atan2(AccelY, AccelZ) * 180 / PI);
       AccelX = (atan2(AccelX, AccelZ) * 180 / PI);
+
+      float K = 0.8;
+      float A = K / (K + dt);
     
       mixX = A *(mixX+GyroX*dt) + (1-A)*AccelY;    
       mixY = A *(mixY+GyroY*dt) + (1-A)*AccelX; 
